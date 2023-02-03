@@ -14,5 +14,7 @@ To include it in you configuration simply download the varmepumpe.yaml file, pla
 ```
 modbus: !include varmepumpe.yaml
 ```
+After this, remember to edit the ip address of your heatpump in the varmepumpe.yaml file.
+
 
 All names in the varmepumpe.yaml are in danish some day i might edit them to english.
