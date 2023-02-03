@@ -1,0 +1,329 @@
+- name: Varmepumpe
+  type: tcp
+  host: xxx.xxx.xxx.xxx  # put in your server ip address here
+  port: 502
+  climates:
+    # Common registres
+    - name: VP min temp
+      unique_id: vp_min_temp
+      address: 34
+      input_type: holding
+      count: 1
+      data_type: int16
+      max_temp: 65
+      min_temp: 5
+      offset: 0
+      precision: 1
+      scale: 0.1
+      target_temp_register: 34
+      temp_step: 1
+      temperature_unit: C
+
+    - name: VP max temp
+      unique_id: vp_max_temp
+      address: 38
+      input_type: holding
+      count: 1
+      data_type: int16
+      max_temp: 65
+      min_temp: 5
+      offset: 0
+      precision: 1
+      scale: 0.1
+      target_temp_register: 38
+      temp_step: 1
+      temperature_unit: C
+
+
+    - name: Egen kurve 30
+      unique_id: nibe_common_own_curve_positive_30
+      address: 39
+      data_type: uint16
+      input_type: holding
+      max_temp: 65
+      min_temp: 5
+      offset: 0
+      precision: 1
+      scale: 1
+      target_temp_register: 39
+      temp_step: 1
+      temperature_unit: C
+
+    - name: Egen kurve 20
+      unique_id: nibe_common_own_curve_positive_20
+      address: 40
+      data_type: uint16
+      input_type: holding
+      max_temp: 65
+      min_temp: 5
+      offset: 0
+      precision: 1
+      scale: 1
+      target_temp_register: 40
+      temp_step: 1
+      temperature_unit: C
+
+    - name: Egen kurve 10
+      unique_id: nibe_common_own_curve_positive_10
+      address: 41
+      data_type: uint16
+      input_type: holding
+      max_temp: 65
+      min_temp: 5
+      offset: 0
+      precision: 1
+      scale: 1
+      target_temp_register: 41
+      temp_step: 1
+      temperature_unit: C
+
+    - name: Egen kurve 0
+      unique_id: nibe_common_own_curve_positive_0
+      address: 42
+      data_type: uint16
+      input_type: holding
+      max_temp: 65
+      min_temp: 5
+      offset: 0
+      precision: 1
+      scale: 1
+      target_temp_register: 42
+      temp_step: 1
+      temperature_unit: C
+
+    - name: Egen kurve -10
+      unique_id: nibe_common_own_curve_negative_10
+      address: 43
+      data_type: uint16
+      input_type: holding
+      max_temp: 65
+      min_temp: 5
+      offset: 0
+      precision: 1
+      scale: 1
+      target_temp_register: 43
+      temp_step: 1
+      temperature_unit: C
+
+    - name: Egen kurve -20
+      unique_id: nibe_common_own_curve_negative_20
+      address: 44
+      data_type: uint16
+      input_type: holding
+      max_temp: 65
+      min_temp: 5
+      offset: 0
+      precision: 1
+      scale: 1
+      target_temp_register: 44
+      temp_step: 1
+      temperature_unit: C
+
+    - name: Egen kurve -30
+      unique_id: nibe_common_own_curve_negative_30
+      address: 45
+      data_type: uint16
+      input_type: holding
+      max_temp: 65
+      min_temp: 5
+      offset: 0
+      precision: 1
+      scale: 1
+      target_temp_register: 45
+      temp_step: 1
+      temperature_unit: C
+
+  sensors:
+      # SMO S40
+    - name: Varmepumpe ude temperatur
+      unique_id: nibe_smos40_bt1
+      unit_of_measurement: °C
+      data_type: int16
+      device_class: temperature
+      address: 1
+      input_type: input
+      scale: 0.1
+      precision: 1
+      state_class: measurement
+
+    - name: Fremløb temperatur
+      unique_id: nibe_smo_s40_supply_temp
+      unit_of_measurement: °C
+      address: 39
+      data_type: int16
+      device_class: temperature
+      input_type: input
+      scale: 0.1
+      precision: 1
+      state_class: measurement
+
+      # NIBE F2120 
+    - name: Varmepumpe retur
+      unique_id: nibe_f2120_bt3
+      unit_of_measurement: °C
+      slave: 1
+      address: 1475
+      data_type: int16
+      device_class: temperature
+      input_type: input
+      scale: 0.1
+      precision: 1
+      state_class: measurement
+
+    - name: Fremløb temperatur f2120
+      unique_id: nibe_f2120_bt12
+      unit_of_measurement: °C
+      slave: 1
+      address: 1478
+      data_type: int16
+      device_class: temperature
+      input_type: input
+      scale: 0.1
+      precision: 1
+      state_class: measurement
+
+    - name: Ude temperatur
+      unique_id: nibe_f2120_bt28
+      unit_of_measurement: °C
+      slave: 1
+      address: 1621
+      data_type: int16
+      device_class: temperature
+      input_type: input
+      scale: 0.1
+      precision: 1
+      state_class: measurement
+
+    - name: Anmodet kompresser frekvens
+      unique_id: nibe_requested_compressor_frequency
+      unit_of_measurement: Hz
+      slave: 1
+      address: 301
+      data_type: uint16
+      device_class: frequency
+      input_type: input
+      scale: 1
+      precision: 1
+      state_class: measurement
+
+    - name: Aktuel kompresser frekvens
+      unique_id: nibe_current_compressor_frequency
+      unit_of_measurement: Hz
+      slave: 1
+      address: 1803
+      data_type: uint16
+      device_class: frequency
+      input_type: input
+      scale: 0.1
+      precision: 1
+      state_class: measurement
+
+    - name: Total kompressor tid
+      unique_id: nibe_total_compressor_run_time
+      unit_of_measurement: h
+      slave: 1
+      address: 1491
+      data_type: int16
+      #device_class: time
+      input_type: input
+      scale: 1
+      precision: 1
+      state_class: total_increasing
+
+    - name: Fordamper
+      unique_id: nibe_evaporator_bt_84
+      unit_of_measurement: °C
+      slave: 1
+      address: 555
+      data_type: int16
+      device_class: temperature
+      input_type: input
+      scale: 0.1
+      precision: 1
+      state_class: measurement
+
+    - name: Kompressor starts
+      unique_id: nibe_compressor_starts
+      slave: 1
+      address: 1489
+      data_type: int16
+      input_type: input
+      state_class: total_increasing
+      scale: 1
+
+    - name: Afrimning
+      unique_id: f2120_defrost
+      slave: 1
+      address: 1805
+      data_type: uint16
+      input_type: input
+      state_class: measurement
+
+
+      # Common registres
+    - name: Beregnet temperatur
+      unique_id: nibe_calculated_temperature
+      unit_of_measurement: °C
+      address: 1017
+      data_type: int16
+      device_class: temperature
+      input_type: input
+      scale: 0.1
+      precision: 1
+      state_class: measurement
+
+    - name: VP strøm be1
+      unique_id: nibe_be1_current
+      unit_of_measurement: A
+      address: 50
+      data_type: int16
+      input_type: input
+      scale: 0.1
+      precision: 1
+      state_class: measurement
+
+    - name: VP strøm be2
+      unique_id: nibe_be2_current
+      unit_of_measurement: A
+      address: 48
+      data_type: int16
+      input_type: input
+      scale: 0.1
+      precision: 1
+      state_class: measurement
+
+    - name: VP strøm be3
+      unique_id: nibe_be3_current
+      unit_of_measurement: A
+      address: 46
+      data_type: int16
+      input_type: input
+      scale: 0.1
+      precision: 1
+      state_class: measurement
+
+    - name: VP total tid el-tilskud
+      unique_id: nibe_total_tid_el_tilskud
+      unit_of_measurement: h
+      address: 1025
+      data_type: int16
+      input_type: input
+      scale: 0.1
+      precision: 1
+      state_class: total_increasing
+
+    - name: VP grad minutter
+      unique_id: nibe_degree_minutes
+      address: 18
+      data_type: int16
+      scale: 0.1
+      input_type: holding
+      state_class: measurement
+
+    - name: VP el-tilskud trin
+      unique_id: nibe_el_tilskud_trin
+      address: 1029
+      data_type: int8
+      input_type: input
+      state_class: measurement
+
