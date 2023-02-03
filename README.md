@@ -12,7 +12,7 @@ To include it in you configuration simply download the varmepumpe.yaml file, pla
 
 
 ```
-modbus: varmepumpe.yaml
+modbus: !include varmepumpe.yaml
 ```
 
 All names in the varmepumpe.yaml are in danish some day i might edit them to english.
